@@ -29,8 +29,10 @@ app.use(bodyParser.json());
 require('./config/express')(app);
 
 
-app.get('/', function(req, res) {
-  res.render('index');
+app.get('/', (req, res) => {
+  res.render('index', {
+    BLUEMIX_ANALYTICS: process.env.BLUEMIX_ANALYTICS,
+  });
 });
 
 app.post('/api/analyze', function(req, res, next) {

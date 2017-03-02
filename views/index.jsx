@@ -11,6 +11,13 @@ const {html, css} = StyleSheetServer.renderStatic(() => ReactDOMServer.renderToS
 
 export {html, css};
 
-export default function index() {
-  return (<Layout css={css}>{(new HtmlToReact.Parser(React)).parse(html)}</Layout>);
+export default function index(props) {
+  return (
+    <Layout
+      bluemixAnalytics={props.BLUEMIX_ANALYTICS} // eslint-disable-line
+      css={css}
+    >
+      {(new HtmlToReact.Parser(React)).parse(html)}
+    </Layout>
+  );
 }
